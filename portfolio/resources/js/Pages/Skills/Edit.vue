@@ -6,49 +6,37 @@ import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { Head, useForm } from "@inertiajs/vue3";
+import {Inertia }  from "@inertiajs/inertia";
 
-defineProps({
-    skills:Array
-})
-
+const props =defineProps({
+    skill:Object
+});
 const form = useForm({
-    name: '',
+    name: props.skill?.name,
     image:null,
-    skill_id:"",
-    project_id:""
 });
 
 const submit = () => {
-   form.post(route("projects.store"));
+    Inertia.post(`/skills/${props.skill.id}`,{
+    _method:'put',
+    name:form.name,
+    image:form.image
+   });
 };
 </script>
 
 <template>
-    <Head title="NewProject" />
+    <Head title="Edit Skill" />
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">New Project</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+               Edit Skill
+            </h2>
         </template>
 
         <div class="py-12">
             <div class="max-w-md mx-auto sm:px-6 lg:px-8 bg-white">
                 <form class="p-4" @submit.prevent="submit">
-                    <InputLabel for="skill" value="Skill" />
-
-                    <div>
-                        <select v-model="form.skill_id" id="skill_id" name="skill_id"
-                        class="mt-1 block w-full pl-3 pr-10 py-2
-                        text-base
-                        border-gary-300
-                        focus:outline-none focus:ring-indigo-500 focus:border-indigo-500
-                        sm:text-sm
-                        rounded-md"
-                        >
-                            <option v-for="skill in skills" :key="skill.id" :value="skill.id">
-                            {{ skill.name }}
-                            </option>
-                        </select>
-                    </div>
                     <div>
                         <InputLabel for="name" value="Name" />
 
@@ -59,21 +47,7 @@ const submit = () => {
                             v-model="form.name"
                             required
                             autofocus
-                            autocomplete="name"
-                        />
-
-                        <InputError class="mt-2" :message="form.errors.name" />
-                    </div>
-                    <div>
-                        <InputLabel for="name" value="URL" />
-
-                        <TextInput
-                            id="project_url"
-                            type="text"
-                            class="mt-1 block w-full"
-                            v-model="form.project_url"
-
-                            autocomplete="projecturl"
+                            autocomplete="username"
                         />
 
                         <InputError class="mt-2" :message="form.errors.name" />
@@ -98,7 +72,7 @@ const submit = () => {
                             :class="{ 'opacity-25': form.processing }"
                             :disabled="form.processing"
                         >
-                            Store
+                            Update
                         </PrimaryButton>
                     </div>
                 </form>
