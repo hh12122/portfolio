@@ -8,29 +8,34 @@ import TextInput from "@/Components/TextInput.vue";
 import { Head, useForm } from "@inertiajs/vue3";
 import {Inertia }  from "@inertiajs/inertia";
 
-const props =defineProps({
-    skill:Object
+const props = defineProps({
+    skills:Array,
+    project:Object
 });
 const form = useForm({
-    name: props.skill?.name,
+    name: props.project?.name,
     image:null,
+    skill_id:props.project?.skill_id,
+    project_url:props.project?.project_url
 });
 
 const submit = () => {
-    Inertia.post(`/skills/${props.skill.id}`,{
+    Inertia.post(`/projects/${props.project.id}`,{
     _method:'put',
     name:form.name,
+    skill_id:form.skill_id,
+    project_url:form.project_url,
     image:form.image
    });
 };
 </script>
 
 <template>
-    <Head title="Edit Skill" />
+    <Head title="Edit project" />
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-               Edit Skill
+               Edit Project
             </h2>
         </template>
 
@@ -38,6 +43,23 @@ const submit = () => {
             <div class="max-w-md mx-auto sm:px-6 lg:px-8 bg-white">
                 <form class="p-4" @submit.prevent="submit">
                     <div>
+                        <InputLabel for="skill" value="Skill" />
+
+<div>
+    <select v-model="form.skill_id" id="skill_id" name="skill_id"
+    class="mt-1 block w-full pl-3 pr-10 py-2
+    text-base
+    border-gary-300
+    focus:outline-none focus:ring-indigo-500 focus:border-indigo-500
+    sm:text-sm
+    rounded-md"
+    >
+        <option v-for="skill in skills" :key="skill.id" :value="skill.id">
+        {{ skill.name }}
+        </option>
+    </select>
+    <InputError class="mt-2" :message="$page.props.errors.skill_id" />
+</div>
                         <InputLabel for="name" value="Name" />
 
                         <TextInput
@@ -48,6 +70,20 @@ const submit = () => {
                             required
                             autofocus
                             autocomplete="username"
+                        />
+
+                        <InputError class="mt-2" :message="$page.props.errors.name" />
+                    </div>
+                    <div>
+                        <InputLabel for="name" value="URL" />
+
+                        <TextInput
+                            id="project_url"
+                            type="text"
+                            class="mt-1 block w-full"
+                            v-model="form.project_url"
+
+                            autocomplete="projecturl"
                         />
 
                         <InputError class="mt-2" :message="$page.props.errors.name" />
@@ -69,8 +105,6 @@ const submit = () => {
                     <div class="flex items-center justify-end mt-4">
                         <PrimaryButton
                             class="ml-4"
-                            :class="{ 'opacity-25': form.processing }"
-                            :disabled="form.processing"
                         >
                             Update
                         </PrimaryButton>

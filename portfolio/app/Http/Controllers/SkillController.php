@@ -50,7 +50,7 @@ class SkillController extends Controller
             ]);
             return Redirect::route('skills.index');
        }
-       return Redirect::back();
+       return Redirect::back()->with('massage','Skill created successfully');
     }
 
     /**
@@ -86,7 +86,7 @@ class SkillController extends Controller
             'name'=>$request->name,
             'image'=>$image
         ]);
-        return Redirect::route('skills.index');
+        return Redirect::route('skills.index')->with('massage','Skill updated successfully');
     }
 
     /**
@@ -98,6 +98,6 @@ class SkillController extends Controller
 
         Storage::delete($skill->image);
         $skill->delete();
-        return Redirect::back();
+        return Redirect::back()->with('massage','Skill deleted successfully');
     }
 }

@@ -29,6 +29,9 @@
                   Name
                 </th>
                 <th scope="col" class="px-6 py-3">
+                 Url
+                </th>
+                <th scope="col" class="px-6 py-3">
                  Skill
                 </th>
                 <th scope="col" class="px-6 py-3">
@@ -47,13 +50,27 @@
                 <td class="px-6 py-4">
                     {{project.name}}
                 </td><td class="px-6 py-4">
+                    {{project.project_url}}
+                </td>
+                <td class="px-6 py-4">
                     {{project.skill.name}}
                 </td>
                 <td class="px-6 py-4" >
                   <img :src="project.image" class="h-12 w-12 rounded-full" >
                 </td>
                 <td class="px-6 py-4">
-e
+                    <Link
+                                        :href="route('projects.edit', project.id)"
+
+                                        class="font-medium text-green-500 hover:text-red-700 mr-2"
+                                    >Edit</Link>
+                                    <Link
+                                        :href="route('projects.destroy', project.id)"
+                                        method="delete"
+                                        as="button"
+                                        type="button"
+                                        class="font-medium text-red-500 hover:text-red-700 mr-2"
+                                    >Delete</Link>
                 </td>
             </tr>
 
