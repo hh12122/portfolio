@@ -7,8 +7,7 @@
  >
              <div class="flex flex-col items-center text-center">
                 <h2 class="section-title">Contact Me</h2>
-                <p class="subtitle">Loremazuegzegazegazehzaljhsdvsqdgzadzaq</p>
-             </div>
+                <p class="subtitle">Have a question or a project in mind? Let's talk!</p>             </div>
              <div class="flex flex-col lg:flex-row lg:gap-x-8">
                 <div class="flex flex-1 flex-col items-start space-y-8 mb-12 lh:mb-0 lg:pt-2">
                     <div class="flex flex-col lg:flex-row gap-x-4">

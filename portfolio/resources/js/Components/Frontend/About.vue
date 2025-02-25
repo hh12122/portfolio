@@ -13,13 +13,20 @@ class="object-cover h-full w-[566px] md:mx-auto lg:mx-0 rounded-2xl " >
             <h2 class="text-3xl lg:text-4xl font-medium lg:font-extrabold mb-3" >
                 About Me
             </h2>
-            <p class="mb-4 text-accent " >Developer</p>
+            <p class="mb-4 text-accent " >Full-Stack Developer</p>
             <hr class="mb-8 opacity-90 dark:opacity-5" >
-            <p calss="mb-8">paeaze</p>
+            <p class="mb-8"> I'm a passionate developer specializing in building modern web applications with
+              Vue.js, Laravel, and Tailwind CSS. I love crafting intuitive user experiences
+              and writing clean, efficient code.</p>
+            <p class="mb-8 text-gray-700 dark:text-gray-300 leading-relaxed">
+              With a strong background in front-end and back-end development, I focus on
+              creating scalable, high-performance applications. Let's collaborate and bring
+              ideas to life!
+            </p>
     </div>
-    <button href="#contact" class="btn btn-md bg-accent text-slate-200 text-light-tail-100">
+    <a href="#contact" class="btn btn-md bg-accent text-slate-200 text-light-tail-100">
         Contact me
-    </button>
+    </a>
 </div>
 </div>
 </div>

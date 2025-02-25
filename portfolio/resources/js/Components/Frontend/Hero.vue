@@ -11,10 +11,10 @@ v-motion
                 I build & Maintain <br> Web App
             </h1>
             <p class="pt-4 pb-8 md:pt-6 md:pb-12 max-w-[480px] text-lg text-center lg:text-left">
-                eazeazeaze
+                Passionate On Web technologies
             </p>
-            <button class="btn btn-md bg-accent dark:bg-dark-secondary dark:hover:text-dark-navy-100 hover:bg-light-secondary hover:text-light-tail-500  md:btn-lg transition-all">
-                Work with me</button>
+            <a href="#contact"  class="btn btn-md bg-accent dark:bg-dark-secondary dark:hover:text-dark-navy-100 hover:bg-light-secondary hover:text-light-tail-500  md:btn-lg transition-all">
+                Work with me</a>
 
         </div>
         <div class=" flex  flex-1 justify-end  h-full items-center mt-8 md:mt-0">
