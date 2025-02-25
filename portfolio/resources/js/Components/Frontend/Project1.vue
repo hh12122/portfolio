@@ -1,5 +1,5 @@
 <template>
-    <Link :href="project.project_url" class="group flex flex-col items-center text-center cursor-pointer"
+    <Link :href="project.project_url" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center text-center cursor-pointer"
     v-motion
     :initial="{ opacity: 0, y: 100 }"
     :visible="{ opacity: 1, y: 0 }" >

@@ -15,8 +15,7 @@ class Skill extends Model
     protected $fillable =['name','image'];
 
     public function projects(){
-return $this->hasMany(Project::class);
-
+        return $this->hasMany(Project::class, 'skill_id'); // Ensure correct foreign key
 }
     /**
  * Create a new factory instance for the model.

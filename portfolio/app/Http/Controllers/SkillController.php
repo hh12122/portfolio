@@ -43,7 +43,7 @@ class SkillController extends Controller
         'name'=>['required','min:3']]
        );
        if($request->hasFile('image')){
-            $image=$request->file('image')->store('skills');
+            $image=$request->file('image')->store('skills','public');
             Skill::create([
                 'name'=>$request->name,
                 'image'=>$image
@@ -79,8 +79,8 @@ class SkillController extends Controller
             'name'=>['required','min:3']
         ]);
         if($request->hasFile('image')){
-            Storage::delete($skill->image);
-            $image=$request->file('image')->store('skills');
+            Storage::delete('public/' . $skill->image);
+            $image=$request->file('image')->store('skills','public');
         }
         $skill->update([
             'name'=>$request->name,
@@ -96,7 +96,7 @@ class SkillController extends Controller
 
     {
 
-        Storage::delete($skill->image);
+        Storage::delete('public/' . $skill->image);
         $skill->delete();
         return Redirect::back()->with('massage','Skill deleted successfully');
     }

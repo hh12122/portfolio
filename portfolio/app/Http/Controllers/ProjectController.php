@@ -42,7 +42,7 @@ class ProjectController extends Controller
             'skill_id'=>['required']]
            );
            if($request->hasFile('image')){
-                $image=$request->file('image')->store('projects');
+                $image=$request->file('image')->store('projects','public');
                 Project::create([
                     'skill_id'=>$request->skill_id,
                     'name'=>$request->name,
@@ -83,8 +83,8 @@ class ProjectController extends Controller
         ]);
 
         if($request->hasFile('image')){
-            Storage::delete($project->image);
-            $image=$request->file('image')->store('projects');
+            Storage::delete('public/' .$project->image);
+            $image=$request->file('image')->store('projects','public');
         }
 
         $project->update([
@@ -103,7 +103,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        Storage::delete($project->image);
+        Storage::delete('public/' .$project->image);
         $project->delete();
         return Redirect::back()->with('massage','Project deleted successfully');
     }

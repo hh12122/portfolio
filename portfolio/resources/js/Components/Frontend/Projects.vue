@@ -44,7 +44,7 @@ const filterProjects= (id) =>{
         selectedSkill.value = id;
     }else{
         filtredProjects.value = props.projects.data.filter(project =>{
-            return project.skill.id=id
+            return project.skill.id==id
         })
         selectedSkill.value=id;
     }

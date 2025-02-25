@@ -6,22 +6,22 @@ import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { Head, useForm } from "@inertiajs/vue3";
-import {Inertia }  from "@inertiajs/inertia";
+import { Inertia } from "@inertiajs/inertia";
 
-const props =defineProps({
-    skill:Object
+const props = defineProps({
+    skill: Object,
 });
 const form = useForm({
     name: props.skill?.name,
-    image:null,
+    image: null,
 });
 
 const submit = () => {
-    Inertia.post(`/skills/${props.skill.id}`,{
-    _method:'put',
-    name:form.name,
-    image:form.image
-   });
+    Inertia.post(`/skills/${props.skill.id}`, {
+        _method: "put",
+        name: form.name,
+        image: form.image,
+    });
 };
 </script>
 
@@ -30,7 +30,7 @@ const submit = () => {
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-               Edit Skill
+                Edit Skill
             </h2>
         </template>
 
@@ -50,7 +50,10 @@ const submit = () => {
                             autocomplete="username"
                         />
 
-                        <InputError class="mt-2" :message="$page.props.errors.name" />
+                        <InputError
+                            class="mt-2"
+                            :message="$page.props.errors.name"
+                        />
                     </div>
                     <div class="mt-2">
                         <InputLabel for="name" value="Image" />
@@ -59,11 +62,13 @@ const submit = () => {
                             id="name"
                             type="file"
                             class="mt-1 block w-full"
-                            @input="form.image=$event.target.files[0]"
-
+                            @input="form.image = $event.target.files[0]"
                         />
 
-                        <InputError class="mt-2" :message="$page.props.errors.image" />
+                        <InputError
+                            class="mt-2"
+                            :message="$page.props.errors.image"
+                        />
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
