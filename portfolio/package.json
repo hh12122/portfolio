@@ -2,7 +2,8 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "vite"
+        "dev": "vite",
+        "build": "vite build"
     },
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.0",
@@ -18,7 +19,6 @@
     },
     "dependencies": {
         "@inertiajs/inertia": "^0.11.1",
-        "@vueuse/motion": "^2.2.3",
-        "ziggy-js": "^2.6.0"
+        "@vueuse/motion": "^2.2.3"
     }
 }
