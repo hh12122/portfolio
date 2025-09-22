@@ -52,12 +52,6 @@ return [
     */
 
     'channels' => [
-        'stack' => [
-            'driver' => 'stack',
-            'channels' => ['single'],
-            'ignore_exceptions' => false,
-        ],
-
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),
@@ -111,12 +105,16 @@ return [
             'facility' => LOG_USER,
             'replace_placeholders' => true,
         ],
+'stack' => [
+    'driver' => 'stack',
+    'channels' => ['errorlog'],
+    'ignore_exceptions' => false,
+],
 
-        'errorlog' => [
-            'driver' => 'errorlog',
-            'level' => env('LOG_LEVEL', 'debug'),
-            'replace_placeholders' => true,
-        ],
+'errorlog' => [
+    'driver' => 'errorlog',
+    'level' => env('LOG_LEVEL', 'debug'),
+],
 
         'null' => [
             'driver' => 'monolog',
